@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuevo Turno — Sistema de Turnos</title>
+  
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar persistente -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-title">Gestión de Turnos</span>
+          <span class="brand-badge">Panel de Control</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <span class="nav-section-title">Principal</span>
+        <a href="../index.html" class="nav-link" data-page="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+            <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+            <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+            <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+          </svg>
+          Inicio
+        </a>
+        <a href="turnos.html" class="nav-link" data-page="turnos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+            <path d="M9 14h6"></path>
+            <path d="M9 18h6"></path>
+            <path d="M9 10h6"></path>
+          </svg>
+          Ver Todos los Turnos
+        </a>
+        <a href="crear-turno.html" class="nav-link active" data-page="crear">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Anotar Nuevo Turno
+        </a>
+
+        <span class="nav-section-title" style="margin-top: var(--space-4);">Ajustes</span>
+        <a href="configuracion.html" class="nav-link" data-page="configuracion">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          Estado del Sistema
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="backend-status-card">
+          <div class="status-dot checking"></div>
+          <div class="status-text">
+            <span class="status-label">Comprobando...</span>
+            <span class="status-sub">Conexión local</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <header class="app-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html" class="breadcrumb-item">Inicio</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="turnos.html" class="breadcrumb-item">Turnos</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">Nuevo Turno</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <a href="turnos.html" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Volver a Turnos
+          </a>
+        </div>
+      </header>
+
+      <div class="content-container">
+        <div class="form-layout-centered">
+          <!-- Contenedor para mensajes y alertas de error -->
+          <div id="form-alert-container"></div>
+
+          <!-- Tarjeta del Formulario -->
+          <div class="form-card">
+            <div class="form-card-header">
+              <h2>Registrar Nuevo Turno</h2>
+              <p>Completá los datos del cliente, el servicio y el horario para guardarlo en el sistema.</p>
+            </div>
+
+            <!-- Formulario interactivo -->
+            <form id="form-crear-turno" novalidate>
+              <div class="form-card-body">
+                <!-- Campo: Nombre del Cliente -->
+                <div class="form-group">
+                  <label for="input-nombre" class="form-label">
+                    Nombre del Cliente <span class="form-label-required">*</span>
+                  </label>
+                  <input type="text" id="input-nombre" name="nombre_cliente" class="form-control" 
+                         placeholder="ej. Mariana González" autocomplete="off" required>
+                  <div id="feedback-nombre" class="form-feedback"></div>
+                  <span class="form-hint">Nombre y apellido del cliente o paciente.</span>
+                </div>
+
+                <!-- Campo: Servicio -->
+                <div class="form-group" style="margin-top: var(--space-4);">
+                  <label for="input-servicio" class="form-label">
+                    Servicio Solicitado <span class="form-label-required">*</span>
+                  </label>
+                  <input type="text" id="input-servicio" name="servicio" class="form-control" 
+                         placeholder="ej. Consulta Médica, Asesoría Legal, Peluquería..." autocomplete="off" required>
+                  <div id="feedback-servicio" class="form-feedback"></div>
+                  
+                  <div style="margin-top: var(--space-2);">
+                    <span class="form-hint">Servicios comunes:</span>
+                    <div class="service-suggestions">
+                      <button type="button" class="suggestion-chip" data-value="Consulta General">Consulta General</button>
+                      <button type="button" class="suggestion-chip" data-value="Control Periódico">Control Periódico</button>
+                      <button type="button" class="suggestion-chip" data-value="Asesoría Legal">Asesoría Legal</button>
+                      <button type="button" class="suggestion-chip" data-value="Soporte Técnico">Soporte Técnico</button>
+                      <button type="button" class="suggestion-chip" data-value="Atención Dental">Atención Dental</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Campos Separados: Fecha y Hora -->
+                <div class="form-row" style="margin-top: var(--space-4);">
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label for="input-fecha" class="form-label">
+                      Fecha del Turno <span class="form-label-required">*</span>
+                    </label>
+                    <div class="input-with-icon">
+                      <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                      </svg>
+                      <input type="date" id="input-fecha" name="fecha" class="form-control" 
+                             min="2024-01-01" max="2035-12-31" required>
+                    </div>
+                    <div id="feedback-fecha" class="form-feedback"></div>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label for="input-hora" class="form-label">
+                      Hora del Turno <span class="form-label-required">*</span>
+                    </label>
+                    <div class="input-with-icon">
+                      <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 14 14"></polyline>
+                      </svg>
+                      <input type="time" id="input-hora" name="hora" class="form-control" required>
+                    </div>
+                    <div id="feedback-hora" class="form-feedback"></div>
+                  </div>
+                </div>
+
+                <!-- Atajos rápidos criollos de fecha y horario -->
+                <div style="margin-top: var(--space-3);">
+                  <span class="form-hint">Atajos rápidos:</span>
+                  <div class="service-suggestions" id="time-suggestions" style="margin-top: var(--space-1);">
+                    <button type="button" class="suggestion-chip date-shortcut" data-day="hoy">Hoy</button>
+                    <button type="button" class="suggestion-chip date-shortcut" data-day="manana">Mañana</button>
+                    <button type="button" class="suggestion-chip date-shortcut" data-day="pasado">Pasado Mañana</button>
+                    <span style="color: var(--border); margin: 0 4px;">|</span>
+                    <button type="button" class="suggestion-chip time-shortcut" data-time="09:00">09:00 hs</button>
+                    <button type="button" class="suggestion-chip time-shortcut" data-time="11:00">11:00 hs</button>
+                    <button type="button" class="suggestion-chip time-shortcut" data-time="15:00">15:00 hs</button>
+                    <button type="button" class="suggestion-chip time-shortcut" data-time="17:00">17:00 hs</button>
+                    <button type="button" class="suggestion-chip time-shortcut" data-time="19:00">19:00 hs</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-card-footer">
+                <a href="turnos.html" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" id="btn-submit-crear" class="btn btn-primary">
+                  <span class="btn-spinner"></span>
+                  <svg class="btn-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                  </svg>
+                  <span class="btn-text">Guardar Turno</span>
+                </button>
+              </div>
+            </form>
+
+            <!-- Panel de confirmación de éxito con botón directo e inequívoco -->
+            <div id="create-success-panel" style="display: none; padding: var(--space-6) var(--space-4); text-align: center;">
+              <div style="width: 56px; height: 56px; border-radius: var(--radius-full); background-color: var(--success-bg); border: 1px solid var(--success-border); color: var(--success); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-3);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+
+              <h2 style="font-size: var(--text-xl); font-weight: var(--weight-bold); margin-bottom: var(--space-1); color: var(--text-main);">
+                ¡Turno Guardado con Éxito!
+              </h2>
+              <p style="color: var(--text-secondary); font-size: var(--text-sm); margin-bottom: var(--space-5);">
+                El turno ya quedó agendado y guardado en el sistema.
+              </p>
+
+              <!-- Resumen del turno creado -->
+              <div style="background-color: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-4); text-align: left; max-width: 400px; margin: 0 auto var(--space-5);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+                  <span style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase;">Número de Turno:</span>
+                  <span id="success-turno-id" class="badge badge-primary font-mono">#000</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+                  <span style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase;">Cliente:</span>
+                  <span id="success-turno-nombre" class="font-medium text-main">-</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+                  <span style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase;">Servicio:</span>
+                  <span id="success-turno-servicio" class="badge badge-neutral">-</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase;">Día y Horario:</span>
+                  <span id="success-turno-fecha-hora" class="badge badge-primary font-mono">-</span>
+                </div>
+              </div>
+
+              <!-- Botones de acción claros y destacados para celular y PC -->
+              <div class="success-actions-group" style="max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-2);">
+                <button type="button" id="btn-crear-otro" class="btn btn-primary btn-lg" style="width: 100%; font-size: var(--text-base); font-weight: var(--weight-bold); justify-content: center;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  + Crear otro turno ahora
+                </button>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-top: var(--space-1);">
+                  <a id="btn-success-ver-detalle" href="#" class="btn btn-secondary" style="justify-content: center;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Ver este turno
+                  </a>
+                  <a href="turnos.html" class="btn btn-secondary" style="justify-content: center;">
+                    Ver todos los turnos
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="../js/crear-turno.js"></script>
+</body>
+</html>

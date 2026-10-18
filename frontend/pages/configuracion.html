@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estado del Sistema — Sistema de Turnos</title>
+  
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Barra lateral de navegación -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-title">Gestión de Turnos</span>
+          <span class="brand-badge">Panel de Control</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <span class="nav-section-title">Principal</span>
+        <a href="../index.html" class="nav-link" data-page="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+            <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+            <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+            <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+          </svg>
+          Inicio
+        </a>
+        <a href="turnos.html" class="nav-link" data-page="turnos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+            <path d="M9 14h6"></path>
+            <path d="M9 18h6"></path>
+            <path d="M9 10h6"></path>
+          </svg>
+          Ver Todos los Turnos
+        </a>
+        <a href="crear-turno.html" class="nav-link" data-page="crear">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Anotar Nuevo Turno
+        </a>
+
+        <span class="nav-section-title" style="margin-top: var(--space-4);">Ajustes</span>
+        <a href="configuracion.html" class="nav-link active" data-page="configuracion">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          Estado del Sistema
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="backend-status-card">
+          <div class="status-dot checking"></div>
+          <div class="status-text">
+            <span class="status-label">Comprobando...</span>
+            <span class="status-sub">Conexión local</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <header class="app-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html" class="breadcrumb-item">Inicio</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">Estado del Sistema</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <a href="../index.html" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Volver al Inicio
+          </a>
+        </div>
+      </header>
+
+      <div class="content-container">
+        <div class="page-header">
+          <div class="page-title-group">
+            <h1>Estado del Sistema</h1>
+            <p>Comprobá que el programa esté conectado y funcionando correctamente</p>
+          </div>
+        </div>
+
+        <div class="config-grid">
+          <!-- Panel 1: Diagnóstico de Conexión en Vivo -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Conexión en Vivo</h2>
+                <span class="panel-subtitle">Prueba de respuesta inmediata entre la pantalla y el sistema</span>
+              </div>
+              <button type="button" id="btn-probar-ping" class="btn btn-secondary btn-sm">
+                <span class="btn-spinner"></span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                  <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                  <path d="M16 21h5v-5"></path>
+                </svg>
+                <span class="btn-text">Probar Conexión</span>
+              </button>
+            </div>
+
+            <div class="panel-body">
+              <div class="config-item">
+                <div class="config-info">
+                  <h4>Estado Actual</h4>
+                  <p>Respuesta recibida desde el servidor del programa</p>
+                </div>
+                <div id="diag-ping-pill">
+                  <span class="badge badge-warning">Comprobando...</span>
+                </div>
+              </div>
+
+              <div class="config-item">
+                <div class="config-info">
+                  <h4>Respuesta del Sistema</h4>
+                  <p>Mensaje devuelto por el servicio</p>
+                </div>
+                <div id="diag-ping-mensaje" class="font-medium text-main text-sm">
+                  -
+                </div>
+              </div>
+
+              <div class="config-item">
+                <div class="config-info">
+                  <h4>Velocidad de Respuesta</h4>
+                  <p>Tiempo que tarda en responder a las acciones</p>
+                </div>
+                <div id="diag-ping-latencia" class="font-mono text-sm text-secondary">
+                  -
+                </div>
+              </div>
+
+              <div class="config-item">
+                <div class="config-info">
+                  <h4>Punto de Conexión</h4>
+                  <p>Dirección donde se realizan las consultas</p>
+                </div>
+                <div id="diag-ping-url" class="font-mono text-xs text-muted">
+                  -
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 2: Configuración de la Dirección del Servidor -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Dirección de Conexión</h2>
+                <span class="panel-subtitle">Permite ajustar la dirección para entrar desde el celular o desde otra máquina</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="form-group" style="margin-bottom: var(--space-4);">
+                <label for="input-api-url" class="form-label">Dirección del Servidor</label>
+                <input type="text" id="input-api-url" class="form-control font-mono" 
+                       placeholder="http://127.0.0.1:8000">
+                <span class="form-hint">
+                  Por defecto: <code>http://127.0.0.1:8000</code>. Si abrís el sistema con un enlace compartido para celular (como ngrok o pinggy), pegalo acá.
+                </span>
+              </div>
+
+              <div style="display: flex; gap: var(--space-2); justify-content: flex-end;">
+                <button type="button" id="btn-restablecer-url" class="btn btn-secondary btn-sm">
+                  Volver a la Original
+                </button>
+                <button type="button" id="btn-guardar-url" class="btn btn-primary btn-sm">
+                  Guardar y Reconectar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Características del Sistema -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Información del Programa</h2>
+                <span class="panel-subtitle">Detalles generales de la instalación</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="config-item">
+                <div class="config-info">
+                  <h4>Diseño y Pantallas</h4>
+                  <p>Interfaz rápida y moderna, optimizada para celular, tablet y computadora.</p>
+                </div>
+                <span class="badge badge-neutral">Versión 1.0</span>
+              </div>
+
+              <div class="config-item">
+                <div class="config-info">
+                  <h4>Servidor de Gestión</h4>
+                  <p>Motor de procesamiento rápido en tiempo real para guardar y buscar turnos al instante.</p>
+                </div>
+                <span class="badge badge-success">Activo</span>
+              </div>
+
+              <div class="config-item">
+                <div class="config-info">
+                  <h4>Base de Datos Local</h4>
+                  <p>Tus turnos se guardan de forma permanente y segura en tu propia máquina (archivo turnos.db), sin riesgos de perderse.</p>
+                </div>
+                <span class="badge badge-neutral">Segura</span>
+              </div>
+
+              <div class="config-item">
+                <div class="config-info">
+                  <h4>Control de Horarios Duplicados</h4>
+                  <p>
+                    El sistema previene automáticamente que dos personas reserven el mismo turno exacto, avisándote en pantalla si el horario ya está ocupado.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="../js/configuracion.js"></script>
+</body>
+</html>

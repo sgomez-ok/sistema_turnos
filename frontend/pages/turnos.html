@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listado de Turnos — Sistema de Turnos</title>
+  
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Barra lateral de navegación -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-title">Gestión de Turnos</span>
+          <span class="brand-badge">Panel de Control</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <span class="nav-section-title">Principal</span>
+        <a href="../index.html" class="nav-link" data-page="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+            <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+            <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+            <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+          </svg>
+          Inicio
+        </a>
+        <a href="turnos.html" class="nav-link active" data-page="turnos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+            <path d="M9 14h6"></path>
+            <path d="M9 18h6"></path>
+            <path d="M9 10h6"></path>
+          </svg>
+          Ver Todos los Turnos
+        </a>
+        <a href="crear-turno.html" class="nav-link" data-page="crear">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Anotar Nuevo Turno
+        </a>
+
+        <span class="nav-section-title" style="margin-top: var(--space-4);">Ajustes</span>
+        <a href="configuracion.html" class="nav-link" data-page="configuracion">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          Estado del Sistema
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="backend-status-card">
+          <div class="status-dot checking"></div>
+          <div class="status-text">
+            <span class="status-label">Comprobando...</span>
+            <span class="status-sub">Conexión local</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <header class="app-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html" class="breadcrumb-item">Inicio</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">Listado de Turnos</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <a href="crear-turno.html" class="btn btn-primary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Nuevo Turno
+          </a>
+        </div>
+      </header>
+
+      <div class="content-container">
+        <!-- Encabezado de la página -->
+        <div class="page-header">
+          <div class="page-title-group">
+            <h1>Listado de Turnos</h1>
+            <p>Todos los turnos anotados en la agenda de tu negocio</p>
+          </div>
+          <div class="page-actions">
+            <a href="crear-turno.html" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              + Anotar Turno
+            </a>
+          </div>
+        </div>
+
+        <!-- Contenedor para errores de conexión -->
+        <div id="turnos-error-container"></div>
+
+        <!-- Barra de herramientas: Búsqueda, Orden y Acciones -->
+        <div class="table-toolbar">
+          <div class="toolbar-search">
+            <div class="input-with-icon">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="search-input" class="form-control" placeholder="Buscar por cliente, servicio o fecha...">
+              <button type="button" id="clear-search-btn" class="input-clear-btn" aria-label="Limpiar búsqueda">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="toolbar-actions">
+            <label for="sort-select" class="sr-only">Ordenar turnos por</label>
+            <select id="sort-select" class="sort-select" aria-label="Ordenar resultados">
+              <option value="id-desc">Nº Turno (Más recientes primero)</option>
+              <option value="id-asc">Nº Turno (Primeros creados)</option>
+              <option value="fecha-asc">Fecha (Más próximos primero)</option>
+              <option value="fecha-desc">Fecha (Más lejanos primero)</option>
+              <option value="nombre-asc">Cliente (A - Z)</option>
+              <option value="nombre-desc">Cliente (Z - A)</option>
+            </select>
+
+            <span id="results-count" class="results-count-badge">Cargando...</span>
+
+            <button type="button" id="btn-refresh-turnos" class="btn btn-secondary btn-icon" title="Actualizar lista">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+                <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                <path d="M16 21h5v-5"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabla de datos con scroll táctil suave en móviles -->
+        <div id="turnos-table-wrapper" class="table-wrapper">
+          <div class="table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="width: 85px;">Nº Turno</th>
+                  <th>Cliente</th>
+                  <th>Servicio Solicitado</th>
+                  <th>Día y Horario</th>
+                  <th style="text-align: right; width: 220px;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="turnos-table-body">
+                <!-- Se inyecta dinámicamente con skeleton -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Contenedor para estados vacíos -->
+        <div id="turnos-empty-container" style="display: none;"></div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="../js/turnos.js"></script>
+</body>
+</html>

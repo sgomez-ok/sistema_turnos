@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio — Sistema de Turnos</title>
+
+  <!-- Estilos Dark Premium -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Overlay móvil -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Barra lateral de navegación -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-title">Gestión de Turnos</span>
+          <span class="brand-badge">Panel de Control</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <span class="nav-section-title">Principal</span>
+        <a href="index.html" class="nav-link active" data-page="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+            <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+            <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+            <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+          </svg>
+          Inicio
+        </a>
+        <a href="pages/turnos.html" class="nav-link" data-page="turnos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+            <path d="M9 14h6"></path>
+            <path d="M9 18h6"></path>
+            <path d="M9 10h6"></path>
+          </svg>
+          Ver Todos los Turnos
+        </a>
+        <a href="pages/crear-turno.html" class="nav-link" data-page="crear">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Anotar Nuevo Turno
+        </a>
+
+        <span class="nav-section-title" style="margin-top: var(--space-4);">Ajustes</span>
+        <a href="pages/configuracion.html" class="nav-link" data-page="configuracion">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          Estado del Sistema
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="backend-status-card">
+          <div class="status-dot checking"></div>
+          <div class="status-text">
+            <span class="status-label">Comprobando...</span>
+            <span class="status-sub">Conexión local</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Área principal -->
+    <main class="app-main">
+      <header class="app-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="breadcrumbs">
+            <span class="breadcrumb-item">Sistema de Turnos</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">Inicio</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <a href="pages/crear-turno.html" class="btn btn-primary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Crear Turno
+          </a>
+        </div>
+      </header>
+
+      <div class="content-container">
+        <!-- Encabezado de página -->
+        <div class="page-header">
+          <div class="page-title-group">
+            <h1>Panel Principal</h1>
+            <p>Bienvenido — Acá podés ver el movimiento del día y tus turnos agendados</p>
+          </div>
+          <div class="page-actions">
+            <a href="pages/turnos.html" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+              </svg>
+              Ver Todos los Turnos
+            </a>
+          </div>
+        </div>
+
+        <!-- Banner de bienvenida y acción rápida -->
+        <div class="quick-action-banner">
+          <div class="quick-action-info">
+            <h3>Organización y control de citas al día</h3>
+            <p>Tus turnos se guardan de forma segura y permanente en tu computadora para tener todo organizado.</p>
+          </div>
+          <div style="display: flex; gap: var(--space-2);">
+            <a href="pages/crear-turno.html" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Crear Turno
+            </a>
+          </div>
+        </div>
+
+        <!-- Contenedor de errores del dashboard -->
+        <div id="dashboard-error-container"></div>
+
+        <!-- Métricas principales -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-card-label">Turnos Guardados</span>
+              <div class="stat-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+              </div>
+            </div>
+            <div class="stat-card-value" id="stat-total-turnos">-</div>
+            <div class="stat-card-sub">
+              <span>En la agenda del negocio</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-card-label">Conexión del Sistema</span>
+              <div class="stat-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 14 14"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="stat-card-value" id="stat-estado-backend">
+              <span class="text-secondary font-medium" style="font-size: var(--text-xl);">Comprobando...</span>
+            </div>
+            <div class="stat-card-sub">
+              <span>Listo para trabajar</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-card-label">Tipos de Servicios</span>
+              <div class="stat-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="stat-card-value" id="stat-servicios-activos">-</div>
+            <div class="stat-card-sub">
+              <span>Diferentes rubros solicitados</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grilla de contenido del Dashboard -->
+        <div class="dashboard-grid">
+          <!-- Columna Izquierda: Últimos turnos registrados -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Últimos Turnos Anotados</h2>
+                <span class="panel-subtitle">Los turnos más nuevos cargados en el sistema</span>
+              </div>
+              <a href="pages/turnos.html" class="btn btn-ghost btn-sm">Ver todos</a>
+            </div>
+
+            <div id="dashboard-table-wrapper" class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 85px;">Nº Turno</th>
+                    <th>Cliente</th>
+                    <th>Servicio</th>
+                    <th>Día y Horario</th>
+                    <th style="text-align: right;">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboard-recent-turnos-body">
+                  <!-- Inyectado dinámicamente con skeleton inicial -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Contenedor de estado vacío -->
+            <div id="dashboard-empty-container" style="display: none;"></div>
+          </div>
+
+          <!-- Columna Derecha: Servicios más pedidos -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Servicios Más Pedidos</h2>
+                <span class="panel-subtitle">Resumen según los turnos de tus clientes</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div id="dashboard-services-list" class="service-distribution-list">
+                <!-- Inyectado dinámicamente -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
